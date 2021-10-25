@@ -1,7 +1,15 @@
 <?php
-if (!isset($_POST["titulo"]) || !isset($_POST["autor"]) || !isset($_POST["editorial"]) || !isset($_POST["genero"]) || !isset($_POST["precio"]) ){
-    exit("Faltan datos");
-}
-include_once "funciones.php";
-guardarProducto($_POST["titulo"], $_POST["autor"], $_POST["editorial"], $_POST["genero"], $_POST["precio"]);
-header("Location: productos.php");
+    include_once "funciones.php";
+    $bd=obtenerConexion();
+
+    $titulo=$_POST['titulo'];
+    $autor=$_POST['autor'];
+    $editorial=$_POST['editorial'];
+    $genero=$_POST['genero'];
+    $precio=$_POST['precio'];
+    $imagen=addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+    
+    $query="INSERT INTO productos(titulo,autor,editorial,genero,precio,imagen) VALUES('$titulo','$autor','$editorial', '$genero', '$precio', '$imagen')";
+    $bd->query($query);
+
+    header("Location: productos.php");

@@ -2,7 +2,7 @@
 <div class="columns">
     <div class="column is-one-third">
         <h2 class="is-size-2">Nuevo producto</h2>
-        <form action="guardar_producto2.php" method="post" enctype="multipart/form-data">
+        <form action="guardar_producto.php" method="post" enctype="multipart/form-data">
 
             <div class="field">
                 <label for="titulo">Titulo</label>
